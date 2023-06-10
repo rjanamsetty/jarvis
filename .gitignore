@@ -1,5 +1,7 @@
+# Added by Ritvik
+*.mlmodel
+
 # Created by https://www.toptal.com/developers/gitignore/api/xcode,macos,visualstudiocode,swift,python,pycharm+all,windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=xcode,macos,visualstudiocode,swift,python,pycharm+all,windows
 
 ### macOS ###
 # General
