@@ -14,9 +14,9 @@ import wave
 from translate import Translator
 
 openai.api_key = "ADD YOUR OPENAI API KEY"
-headers = {"Authorization": "Bearer " + HuggingFace_API_Key}
-pinecone.init(api_key=Pinecone_API_Key,environment=Pinecone_Environment)
-personal_index = pinecone.Index(Pinecone_Index_Name)
+# headers = {"Authorization": "Bearer " + HuggingFace_API_Key}
+# pinecone.init(api_key=Pinecone_API_Key,environment=Pinecone_Environment)
+# personal_index = pinecone.Index(Pinecone_Index_Name)
 
 engine = pyttsx3.init()
 # rate = engine.getProperty('rate')   # getting details of current speaking rate
@@ -177,31 +177,31 @@ def getResultLLM(company=None, service=None, model=None, messages=None, prompt=N
             # time.sleep(sleep_duration_reloading)
             return f"Error: {e}"
 
-def upload_user_data(data):
-    try:
-        id = str(personal_index.describe_index_stats()['total_vector_count']+1)
-        embedding = openai.Embedding.create(
-                model="text-embedding-ada-002",
-                input=str(data)
-                ).data[0].embedding
-        personal_index.upsert([(id, embedding, {"username": 'naman', "data":data, "type":"user data"})])
-        return('Successfully uploaded data!') 
-    except Exception as e:
-        return(f"Upserting error: {e}")
+# def upload_user_data(data):
+#     try:
+#         id = str(personal_index.describe_index_stats()['total_vector_count']+1)
+#         embedding = openai.Embedding.create(
+#                 model="text-embedding-ada-002",
+#                 input=str(data)
+#                 ).data[0].embedding
+#         personal_index.upsert([(id, embedding, {"username": 'naman', "data":data, "type":"user data"})])
+#         return('Successfully uploaded data!') 
+#     except Exception as e:
+#         return(f"Upserting error: {e}")
     
-def retrieve_user_data(query):
-    try:
-        query_embedding = openai.Embedding.create(model="text-embedding-ada-002",input=str(query)).data[0].embedding
-        results = personal_index.query(
-            vector=query_embedding,
-            top_k=5,
-            filter={"type": {"$eq": "jarvisxr_conversation"}},
-            include_metadata=True
-        ).matches
-        results = str([d['metadata'] for d in results])
-        return(results)
-    except Exception as e:
-        return(f"Querying error: {e}")
+# def retrieve_user_data(query):
+#     try:
+#         query_embedding = openai.Embedding.create(model="text-embedding-ada-002",input=str(query)).data[0].embedding
+#         results = personal_index.query(
+#             vector=query_embedding,
+#             top_k=5,
+#             filter={"type": {"$eq": "jarvisxr_conversation"}},
+#             include_metadata=True
+#         ).matches
+#         results = str([d['metadata'] for d in results])
+#         return(results)
+#     except Exception as e:
+#         return(f"Querying error: {e}")
 
 def record_audio():
     r = sr.Recognizer()
@@ -237,17 +237,17 @@ def translation(text, from_language, to_language):
     translation = translator.translate(text)
     return(translation)
 
-def upload_conversation_data(data):
-    try:
-        id = str(personal_index.describe_index_stats()['total_vector_count']+1)
-        embedding = openai.Embedding.create(
-                model="text-embedding-ada-002",
-                input=str(data)
-                ).data[0].embedding
-        personal_index.upsert([(id, embedding, {"username": "naman", "data":data, "type":"jarvisxr_conversation"})])
-        return('Successfully uploaded data!') 
-    except Exception as e:
-        return(f"Upserting error: {e}")
+# def upload_conversation_data(data):
+#     try:
+#         id = str(personal_index.describe_index_stats()['total_vector_count']+1)
+#         embedding = openai.Embedding.create(
+#                 model="text-embedding-ada-002",
+#                 input=str(data)
+#                 ).data[0].embedding
+#         personal_index.upsert([(id, embedding, {"username": "naman", "data":data, "type":"jarvisxr_conversation"})])
+#         return('Successfully uploaded data!') 
+#     except Exception as e:
+#         return(f"Upserting error: {e}")
 
 def get_image_labels():
 
