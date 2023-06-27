@@ -15,9 +15,10 @@
 		1B01EBDB2A3405E2003FBF48 /* JarvisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBDA2A3405E2003FBF48 /* JarvisTests.swift */; };
 		1B01EBE52A3405E2003FBF48 /* JarvisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBE42A3405E2003FBF48 /* JarvisUITests.swift */; };
 		1B01EBE72A3405E2003FBF48 /* JarvisUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBE62A3405E2003FBF48 /* JarvisUITestsLaunchTests.swift */; };
-		1B01EBF62A3415B1003FBF48 /* YOLOv3FP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBF52A3415B1003FBF48 /* YOLOv3FP16.mlmodel */; };
-		1B01EBFA2A365A54003FBF48 /* ObjectDetectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBF92A365A54003FBF48 /* ObjectDetectCoordinator.swift */; };
-		1B01EBFC2A366245003FBF48 /* ObjectDetectDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBFB2A366245003FBF48 /* ObjectDetectDebugView.swift */; };
+		1B01EBFA2A365A54003FBF48 /* ObjectDetectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBF92A365A54003FBF48 /* ObjectDetectProtocol.swift */; };
+		1B4F231D2A3A9EDA008A3F49 /* yolov8s.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F231C2A3A9EDA008A3F49 /* yolov8s.mlmodel */; };
+		1B89AF232A4A695F00C44F8D /* HighestConfidenceObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */; };
+		1B89AF252A4A72BC00C44F8D /* YoloObjectDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B89AF242A4A72BC00C44F8D /* YoloObjectDetect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,9 +50,10 @@
 		1B01EBE02A3405E2003FBF48 /* JarvisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JarvisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B01EBE42A3405E2003FBF48 /* JarvisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarvisUITests.swift; sourceTree = "<group>"; };
 		1B01EBE62A3405E2003FBF48 /* JarvisUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarvisUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1B01EBF52A3415B1003FBF48 /* YOLOv3FP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3FP16.mlmodel; sourceTree = "<group>"; };
-		1B01EBF92A365A54003FBF48 /* ObjectDetectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectCoordinator.swift; sourceTree = "<group>"; };
-		1B01EBFB2A366245003FBF48 /* ObjectDetectDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectDebugView.swift; sourceTree = "<group>"; };
+		1B01EBF92A365A54003FBF48 /* ObjectDetectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectProtocol.swift; sourceTree = "<group>"; };
+		1B4F231C2A3A9EDA008A3F49 /* yolov8s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolov8s.mlmodel; sourceTree = "<group>"; };
+		1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighestConfidenceObservation.swift; sourceTree = "<group>"; };
+		1B89AF242A4A72BC00C44F8D /* YoloObjectDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoloObjectDetect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,14 +104,15 @@
 		1B01EBC62A3405DF003FBF48 /* Jarvis */ = {
 			isa = PBXGroup;
 			children = (
-				1B01EBF52A3415B1003FBF48 /* YOLOv3FP16.mlmodel */,
+				1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */,
+				1B4F231C2A3A9EDA008A3F49 /* yolov8s.mlmodel */,
 				1B01EBC72A3405DF003FBF48 /* AppDelegate.swift */,
 				1B01EBC92A3405DF003FBF48 /* ContentView.swift */,
 				1B01EBCB2A3405DF003FBF48 /* Experience.rcproject */,
 				1B01EBCD2A3405E1003FBF48 /* Assets.xcassets */,
 				1B01EBCF2A3405E1003FBF48 /* Preview Content */,
-				1B01EBF92A365A54003FBF48 /* ObjectDetectCoordinator.swift */,
-				1B01EBFB2A366245003FBF48 /* ObjectDetectDebugView.swift */,
+				1B01EBF92A365A54003FBF48 /* ObjectDetectProtocol.swift */,
+				1B89AF242A4A72BC00C44F8D /* YoloObjectDetect.swift */,
 			);
 			path = Jarvis;
 			sourceTree = "<group>";
@@ -269,12 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B01EBFC2A366245003FBF48 /* ObjectDetectDebugView.swift in Sources */,
+				1B4F231D2A3A9EDA008A3F49 /* yolov8s.mlmodel in Sources */,
 				1B01EBCA2A3405DF003FBF48 /* ContentView.swift in Sources */,
-				1B01EBF62A3415B1003FBF48 /* YOLOv3FP16.mlmodel in Sources */,
+				1B89AF232A4A695F00C44F8D /* HighestConfidenceObservation.swift in Sources */,
 				1B01EBC82A3405DF003FBF48 /* AppDelegate.swift in Sources */,
-				1B01EBFA2A365A54003FBF48 /* ObjectDetectCoordinator.swift in Sources */,
+				1B01EBFA2A365A54003FBF48 /* ObjectDetectProtocol.swift in Sources */,
 				1B01EBCC2A3405DF003FBF48 /* Experience.rcproject in Sources */,
+				1B89AF252A4A72BC00C44F8D /* YoloObjectDetect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

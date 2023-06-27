@@ -24,7 +24,7 @@ struct ARViewContainer: UIViewRepresentable {
     private let log = Logger(subsystem: "com.rjanamsetty.jarvis", category: "ARViewContainer")
     var frameSize: CGSize = .zero
     let arView = ARView(frame: .zero)
-       
+    
     func makeUIView(context: Context) -> ARView {
         let tapGesture = UITapGestureRecognizer(
             target: context.coordinator,
@@ -37,8 +37,8 @@ struct ARViewContainer: UIViewRepresentable {
     
     func updateUIView(_ uiView: ARView, context: Context) {}
     
-    func makeCoordinator() -> ObjectDetectCoordinator {
-        return ObjectDetectCoordinator(self)
+    func makeCoordinator() -> ObjectDetectProtocol {
+        return YoloObjectDetect(arView)
     }
 }
 
