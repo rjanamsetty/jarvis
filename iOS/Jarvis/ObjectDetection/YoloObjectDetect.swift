@@ -12,31 +12,41 @@ import ARKit
 import RealityKit
 import os
 
-final class YoloObjectDetect: NSObject, ObjectDetectProtocol{
+/// Coordinator for object detection using
+class YoloObjectDetect: NSObject, ObjectDetectProtocol{
     
+    /// The vision requests queue
     private var requests = [VNRequest]()
-    let log = Logger(subsystem: "com.rjanamsetty.jarvis", category: "YoloObjectDetect")
+    /// Logger to log within the class
+    private let log = Logger(subsystem: AppDelegate.subsystem, category: "YoloObjectDetect")
+    /// The parent view associated with the view
     var parent: ARView
+    /// The size of the raw frame captured from the camera
     var frameSize: CGSize
+    /// List of objects detected in the scene
+    var objects: [String]
     
     /// Creates a coordinator for AR object detection
-    /// - Parameter view: ARView from which object detection is called
+    /// - Parameter view: `ARView` from which object detection is called
     init(_ parent: ARView) {
         self.parent = parent
         self.frameSize = .zero
+        self.objects = []
         super.init()
         if let error = self.setupVision() {
             fatalError(error.localizedDescription)
         }
     }
     
+    /// Performs a vision request from a tap action though a coordinator
+    /// - Parameter sender: Sender of this function
     @objc func tapGestureMethod(_ sender : UITapGestureRecognizer){
-        onTap(sender)
+        performVisionFromTap(sender)
     }
     
     @discardableResult
-    /// Sets up a YOLO object detection model for image proccessing
-    /// - Returns: NSError if the model is not found. Else nil
+    /// Sets up the pipeline for the computer vision task using YOLO object detection
+    /// - Returns: An error detailing the setup, if applicable
     func setupVision() -> NSError? {
         
         // Set the error to throw
@@ -54,6 +64,11 @@ final class YoloObjectDetect: NSObject, ObjectDetectProtocol{
             
             // Insert any non-UI updates here on the helper Queue
             let observations = request.results?.parseAsHighestConfidenceObservation(with: self.parent, size: self.frameSize)
+            if let obs = observations {
+                for obj in obs {
+                    self.objects.append(obj.label)
+                }
+            }
             
             // Insert any UI updates on the main queue
             DispatchQueue.main.async(execute: {
@@ -69,14 +84,18 @@ final class YoloObjectDetect: NSObject, ObjectDetectProtocol{
         return error
     }
     
-    func performVision(cvPixelBuffer: CVPixelBuffer, orientation: CGImagePropertyOrientation) {
+    /// Performs the requested computer vision tasks for the given image using YOLO object detection
+    /// - Parameter cvPixelBuffer: The raw camera frame
+    /// - Returns: List of objects detected in the scene
+    func performVision(_ cvPixelBuffer: CVPixelBuffer) -> [String] {
+        let orientation = exifOrientationFromDeviceOrientation()
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: cvPixelBuffer, orientation: orientation, options: [:])
         do {
             try imageRequestHandler.perform(self.requests)
+            return self.objects
         } catch {
             log.error("Error: \(error.localizedDescription)")
+            return []
         }
     }
-    
-    
 }

@@ -12,31 +12,35 @@ import ARKit
 import RealityKit
 import os
 
-
-/// A coordinator for AR object detection
 @objc
+/// A protocol for AR object detection
 protocol ObjectDetectProtocol where Self: NSObject {
     
-    ///  The parent view associated with the view
+    /// The parent view associated with the view
     var parent: ARView { get set }
+    /// The size of the raw frame captured from the camera
     var frameSize: CGSize { get set}
+    /// List of objects detected in the scene
+    var objects: [String] { get set}
     
     /// Performs the requested computer vision tasks for the given image
-    /// - Parameters:
-    ///   - cvPixelBuffer: The raw camera frame
-    ///   - orientation: Orientation of the phone
-    func performVision(cvPixelBuffer: CVPixelBuffer, orientation: CGImagePropertyOrientation)
+    /// - Parameter cvPixelBuffer: The raw camera frame
+    /// - Returns: List of objects detected in the scene
+    func performVision(_ cvPixelBuffer: CVPixelBuffer) -> [String]
     
     @discardableResult
     /// Sets up the pipeline for the computer vision task
     /// - Returns: An error detailing the setup, if applicable
     func setupVision() -> NSError?
     
+    /// Performs a vision request from a tap action though a coordinator
+    /// - Parameter sender: Sender of this function
     @objc func tapGestureMethod(_ sender : UITapGestureRecognizer)
+    
 }
 
 extension ObjectDetectProtocol {
-
+    
     /// Gets the current orientation of the device
     /// - Returns: The orientation of the current device
     func exifOrientationFromDeviceOrientation() -> CGImagePropertyOrientation {
@@ -57,20 +61,31 @@ extension ObjectDetectProtocol {
         return exifOrientation
     }
     
-    /// Defines the action to perfom on a tap of the screen
-    /// - Parameter sender: Sender of this function
-    func onTap(_ sender : UITapGestureRecognizer){
-        
-        // Dynamically get view and frame from the gesture
-        let log = Logger(subsystem: "com.rjanamsetty.jarvis", category: "ObjectDetectProtocol")
-        log.debug("Screen Tapped")
-        guard let sceneView = sender.view as? ARView else { return }
-        guard let currentFrame = sceneView.session.currentFrame else { return }
+    /// Performs a vision request from a ARViiew
+    /// - Parameter view: ARView associated with the vision request
+    /// - Returns: List of objects detected in the scene
+    func performVisionFromARView(_ view: ARView) -> [String] {
+        let log = Logger(subsystem: AppDelegate.subsystem, category: "ObjectDetectProtocol")
+        guard let currentFrame = view.session.currentFrame else {
+            log.debug("No ARFrame Found")
+            return []
+        }
         frameSize = currentFrame.camera.imageResolution
-        
-        // Get orientation and perform vision
-        let exifOrientation = exifOrientationFromDeviceOrientation()
-        performVision(cvPixelBuffer: currentFrame.capturedImage, orientation: exifOrientation)
+        return performVision(currentFrame.capturedImage)
+    }
+    
+    @discardableResult
+    /// Performs a vision request from a tap action
+    /// - Parameter sender: Sender of this function
+    /// - Returns: List of objects detected in the scene
+    func performVisionFromTap(_ sender : UITapGestureRecognizer) -> [String] {
+        let log = Logger(subsystem: AppDelegate.subsystem, category: "ObjectDetectProtocol")
+        log.debug("Screen Tapped")
+        guard let sceneView = sender.view as? ARView else {
+            log.debug("Sender is not a AR View")
+            return []
+        }
+        return performVisionFromARView(sceneView)
     }
     
 }

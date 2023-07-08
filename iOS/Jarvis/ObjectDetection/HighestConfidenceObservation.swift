@@ -14,29 +14,28 @@ import os
 
 /// Contains infromation about the highest confidence object match when performing object detection
 struct HighestConfidenceObservation {
-    private let observation: VNClassificationObservation
-    private let view: ARView
-    private let log = Logger(subsystem: "com.rjanamsetty.jarvis", category: "HighestConfidenceObservation")
     
+    /// Raw `VNClassificationObservation` object related with this object
+    private let observation: VNClassificationObservation
+    /// `ARView` associated with this observation
+    private let view: ARView
+    /// `Logger` to log within the class
+    private let log = Logger(subsystem: AppDelegate.subsystem, category: "HighestConfidenceObservation")
     ///  Label associated with the highest confidence match
     let label: String
-    
     /// The confidence of the match
     let confidence: Float
-    
     /// Location of the object in the 2D frame
     let boundingBox: CGRect
-    
     /// Center point of the detection in 2D
     let center: CGPoint
-    
     /// Creates a raycast from the center of the bounding box to the 3D world
     let raycast: [ARRaycastResult]
     
     /// Contains infromation about the highest confidence object match when performing object detection
     /// - Parameters:
-    ///   - recognizedObservation: VNRecognizedObjectObservation containing information about the detected object
-    ///   - view: ARView associated with where the observation took place
+    ///   - recognizedObservation: `VNRecognizedObjectObservation` containing information about the detected object
+    ///   - view: `ARView` associated with where the observation took place
     init(from recognizedObservation: VNRecognizedObjectObservation, with container: ARView, size: CGSize){
         self.view = container
         self.observation = recognizedObservation.labels[0]
@@ -83,15 +82,15 @@ struct HighestConfidenceObservation {
 
 extension Array where Element: VNObservation {
     
-    /// Converts an array of VNObservation objects as VNRecognizedObjectObservation objects when performing object detection
-    /// - Returns: An array of VNRecognizedObjectObservation objects
+    /// Converts an array of `VNObservation` objects as `VNRecognizedObjectObservation` objects when performing object detection
+    /// - Returns: An array of `VNRecognizedObjectObservation` objects
     func parseAsVNRecognizedObjectObservation() -> [VNRecognizedObjectObservation] {
         return self.compactMap { $0 as? VNRecognizedObjectObservation }
     }
     
-    /// Converts an array of VNObservation objects as HighestConfidenceObservation objects when performing object detection
-    /// - Parameter view: ARViewContainer for which the observation takes place in
-    /// - Returns: An array of HighestConfidenceObservation object
+    /// Converts an array of `VNObservation` objects as `HighestConfidenceObservation` objects when performing object detection
+    /// - Parameter view: `ARViewContainer` for which the observation takes place in
+    /// - Returns: An array of `HighestConfidenceObservation` objects
     func parseAsHighestConfidenceObservation(with parent: ARView, size: CGSize) -> [HighestConfidenceObservation] {
         return self.parseAsVNRecognizedObjectObservation().compactMap { obs in HighestConfidenceObservation(from: obs, with: parent, size: size)}
     }

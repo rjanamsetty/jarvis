@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08BE462367038BEAA7ED13DA /* Pods_Jarvis_JarvisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE2BCD8462BC31706EB00ABA /* Pods_Jarvis_JarvisUITests.framework */; };
 		1B01EBC82A3405DF003FBF48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBC72A3405DF003FBF48 /* AppDelegate.swift */; };
 		1B01EBCA2A3405DF003FBF48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBC92A3405DF003FBF48 /* ContentView.swift */; };
 		1B01EBCC2A3405DF003FBF48 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 1B01EBCB2A3405DF003FBF48 /* Experience.rcproject */; };
@@ -19,6 +20,14 @@
 		1B4F231D2A3A9EDA008A3F49 /* yolov8s.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1B4F231C2A3A9EDA008A3F49 /* yolov8s.mlmodel */; };
 		1B89AF232A4A695F00C44F8D /* HighestConfidenceObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */; };
 		1B89AF252A4A72BC00C44F8D /* YoloObjectDetect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B89AF242A4A72BC00C44F8D /* YoloObjectDetect.swift */; };
+		1BAE947C2A520CF100AE9C09 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE947B2A520CF100AE9C09 /* OpenAIService.swift */; };
+		1BAE94822A5231F000AE9C09 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 1BAE94812A5231F000AE9C09 /* OpenAI */; };
+		1BAE94862A525C0200AE9C09 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94852A525C0200AE9C09 /* TranslationService.swift */; };
+		1BAE94882A549F2E00AE9C09 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */; };
+		1BAE948A2A54AD1E00AE9C09 /* ARContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */; };
+		1BAE948C2A54FDF000AE9C09 /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE948B2A54FDF000AE9C09 /* AudioRecordingService.swift */; };
+		3E5D0F7420E4124A281901B5 /* Pods_Jarvis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A608ABFF45BF6C25FA55A6 /* Pods_Jarvis.framework */; };
+		FAADA1573E6D2C6E0678F761 /* Pods_JarvisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA5111C298A7629995BC407 /* Pods_JarvisTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10DF7EFD5497A0AAAF5946F8 /* Pods-Jarvis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis.release.xcconfig"; path = "Target Support Files/Pods-Jarvis/Pods-Jarvis.release.xcconfig"; sourceTree = "<group>"; };
+		1366D9244334D3938C32189D /* Pods-Jarvis-JarvisUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis-JarvisUITests.debug.xcconfig"; path = "Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1B01EBC42A3405DF003FBF48 /* Jarvis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jarvis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B01EBC72A3405DF003FBF48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B01EBC92A3405DF003FBF48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,8 +63,20 @@
 		1B01EBE62A3405E2003FBF48 /* JarvisUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JarvisUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1B01EBF92A365A54003FBF48 /* ObjectDetectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectProtocol.swift; sourceTree = "<group>"; };
 		1B4F231C2A3A9EDA008A3F49 /* yolov8s.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = yolov8s.mlmodel; sourceTree = "<group>"; };
+		1B50343B2AF018DFB5A5039F /* Pods-JarvisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisTests.debug.xcconfig"; path = "Target Support Files/Pods-JarvisTests/Pods-JarvisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighestConfidenceObservation.swift; sourceTree = "<group>"; };
 		1B89AF242A4A72BC00C44F8D /* YoloObjectDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoloObjectDetect.swift; sourceTree = "<group>"; };
+		1BAE947B2A520CF100AE9C09 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		1BAE94852A525C0200AE9C09 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
+		1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContainerView.swift; sourceTree = "<group>"; };
+		1BAE948B2A54FDF000AE9C09 /* AudioRecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
+		1CA5111C298A7629995BC407 /* Pods_JarvisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JarvisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F6C84A8D27CB5C839F7C3E0 /* Pods-JarvisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisTests.release.xcconfig"; path = "Target Support Files/Pods-JarvisTests/Pods-JarvisTests.release.xcconfig"; sourceTree = "<group>"; };
+		7635A1630ADAE9B9C3BB17BA /* Pods-Jarvis-JarvisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis-JarvisUITests.release.xcconfig"; path = "Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A1A608ABFF45BF6C25FA55A6 /* Pods_Jarvis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jarvis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5CE93ED6C50EF2E89079EF1 /* Pods-Jarvis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis.debug.xcconfig"; path = "Target Support Files/Pods-Jarvis/Pods-Jarvis.debug.xcconfig"; sourceTree = "<group>"; };
+		BE2BCD8462BC31706EB00ABA /* Pods_Jarvis_JarvisUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Jarvis_JarvisUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +84,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BAE94822A5231F000AE9C09 /* OpenAI in Frameworks */,
+				3E5D0F7420E4124A281901B5 /* Pods_Jarvis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAADA1573E6D2C6E0678F761 /* Pods_JarvisTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08BE462367038BEAA7ED13DA /* Pods_Jarvis_JarvisUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +115,8 @@
 				1B01EBD92A3405E2003FBF48 /* JarvisTests */,
 				1B01EBE32A3405E2003FBF48 /* JarvisUITests */,
 				1B01EBC52A3405DF003FBF48 /* Products */,
+				A600332C3364913697AF8986 /* Pods */,
+				DE45F143BCA9381AC882EA0C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,15 +133,14 @@
 		1B01EBC62A3405DF003FBF48 /* Jarvis */ = {
 			isa = PBXGroup;
 			children = (
-				1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */,
+				1BAE948F2A58CBF800AE9C09 /* Views */,
+				1BAE948E2A58CBD700AE9C09 /* ObjectDetection */,
+				1BAE948D2A58CB0A00AE9C09 /* Services */,
 				1B4F231C2A3A9EDA008A3F49 /* yolov8s.mlmodel */,
 				1B01EBC72A3405DF003FBF48 /* AppDelegate.swift */,
-				1B01EBC92A3405DF003FBF48 /* ContentView.swift */,
 				1B01EBCB2A3405DF003FBF48 /* Experience.rcproject */,
 				1B01EBCD2A3405E1003FBF48 /* Assets.xcassets */,
 				1B01EBCF2A3405E1003FBF48 /* Preview Content */,
-				1B01EBF92A365A54003FBF48 /* ObjectDetectProtocol.swift */,
-				1B89AF242A4A72BC00C44F8D /* YoloObjectDetect.swift */,
 			);
 			path = Jarvis;
 			sourceTree = "<group>";
@@ -142,6 +170,59 @@
 			path = JarvisUITests;
 			sourceTree = "<group>";
 		};
+		1BAE948D2A58CB0A00AE9C09 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1BAE947B2A520CF100AE9C09 /* OpenAIService.swift */,
+				1BAE94852A525C0200AE9C09 /* TranslationService.swift */,
+				1BAE948B2A54FDF000AE9C09 /* AudioRecordingService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		1BAE948E2A58CBD700AE9C09 /* ObjectDetection */ = {
+			isa = PBXGroup;
+			children = (
+				1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */,
+				1B01EBF92A365A54003FBF48 /* ObjectDetectProtocol.swift */,
+				1B89AF242A4A72BC00C44F8D /* YoloObjectDetect.swift */,
+			);
+			path = ObjectDetection;
+			sourceTree = "<group>";
+		};
+		1BAE948F2A58CBF800AE9C09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B01EBC92A3405DF003FBF48 /* ContentView.swift */,
+				1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */,
+				1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A600332C3364913697AF8986 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5CE93ED6C50EF2E89079EF1 /* Pods-Jarvis.debug.xcconfig */,
+				10DF7EFD5497A0AAAF5946F8 /* Pods-Jarvis.release.xcconfig */,
+				1366D9244334D3938C32189D /* Pods-Jarvis-JarvisUITests.debug.xcconfig */,
+				7635A1630ADAE9B9C3BB17BA /* Pods-Jarvis-JarvisUITests.release.xcconfig */,
+				1B50343B2AF018DFB5A5039F /* Pods-JarvisTests.debug.xcconfig */,
+				3F6C84A8D27CB5C839F7C3E0 /* Pods-JarvisTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DE45F143BCA9381AC882EA0C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A1A608ABFF45BF6C25FA55A6 /* Pods_Jarvis.framework */,
+				BE2BCD8462BC31706EB00ABA /* Pods_Jarvis_JarvisUITests.framework */,
+				1CA5111C298A7629995BC407 /* Pods_JarvisTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,15 +230,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B01EBEA2A3405E2003FBF48 /* Build configuration list for PBXNativeTarget "Jarvis" */;
 			buildPhases = (
+				38F1715B26918E8FACB6CA06 /* [CP] Check Pods Manifest.lock */,
 				1B01EBC02A3405DF003FBF48 /* Sources */,
 				1B01EBC12A3405DF003FBF48 /* Frameworks */,
 				1B01EBC22A3405DF003FBF48 /* Resources */,
+				D6EA1CC3CBE4E9CAD5560B49 /* [CP] Embed Pods Frameworks */,
+				105E8DCD75CB00BCEC41E276 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Jarvis;
+			packageProductDependencies = (
+				1BAE94812A5231F000AE9C09 /* OpenAI */,
+			);
 			productName = Jarvis;
 			productReference = 1B01EBC42A3405DF003FBF48 /* Jarvis.app */;
 			productType = "com.apple.product-type.application";
@@ -166,6 +253,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B01EBED2A3405E2003FBF48 /* Build configuration list for PBXNativeTarget "JarvisTests" */;
 			buildPhases = (
+				52AD444D6C4CBAA967F6E797 /* [CP] Check Pods Manifest.lock */,
 				1B01EBD22A3405E2003FBF48 /* Sources */,
 				1B01EBD32A3405E2003FBF48 /* Frameworks */,
 				1B01EBD42A3405E2003FBF48 /* Resources */,
@@ -184,9 +272,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B01EBF02A3405E2003FBF48 /* Build configuration list for PBXNativeTarget "JarvisUITests" */;
 			buildPhases = (
+				F87966A547703050819C7E6A /* [CP] Check Pods Manifest.lock */,
 				1B01EBDC2A3405E2003FBF48 /* Sources */,
 				1B01EBDD2A3405E2003FBF48 /* Frameworks */,
 				1B01EBDE2A3405E2003FBF48 /* Resources */,
+				8E4F502493C4648FD30CFE0A /* [CP] Embed Pods Frameworks */,
+				BFDF200F7CD2E8D9453D3151 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -230,6 +321,9 @@
 				Base,
 			);
 			mainGroup = 1B01EBBB2A3405DF003FBF48;
+			packageReferences = (
+				1BAE94802A5231F000AE9C09 /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
 			productRefGroup = 1B01EBC52A3405DF003FBF48 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -267,6 +361,143 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		105E8DCD75CB00BCEC41E276 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis/Pods-Jarvis-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis/Pods-Jarvis-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jarvis/Pods-Jarvis-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		38F1715B26918E8FACB6CA06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Jarvis-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52AD444D6C4CBAA967F6E797 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-JarvisTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E4F502493C4648FD30CFE0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFDF200F7CD2E8D9453D3151 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6EA1CC3CBE4E9CAD5560B49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis/Pods-Jarvis-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Jarvis/Pods-Jarvis-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Jarvis/Pods-Jarvis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F87966A547703050819C7E6A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Jarvis-JarvisUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B01EBC02A3405DF003FBF48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -274,8 +505,13 @@
 			files = (
 				1B4F231D2A3A9EDA008A3F49 /* yolov8s.mlmodel in Sources */,
 				1B01EBCA2A3405DF003FBF48 /* ContentView.swift in Sources */,
+				1BAE948A2A54AD1E00AE9C09 /* ARContainerView.swift in Sources */,
 				1B89AF232A4A695F00C44F8D /* HighestConfidenceObservation.swift in Sources */,
+				1BAE947C2A520CF100AE9C09 /* OpenAIService.swift in Sources */,
 				1B01EBC82A3405DF003FBF48 /* AppDelegate.swift in Sources */,
+				1BAE948C2A54FDF000AE9C09 /* AudioRecordingService.swift in Sources */,
+				1BAE94862A525C0200AE9C09 /* TranslationService.swift in Sources */,
+				1BAE94882A549F2E00AE9C09 /* ToolbarView.swift in Sources */,
 				1B01EBFA2A365A54003FBF48 /* ObjectDetectProtocol.swift in Sources */,
 				1B01EBCC2A3405DF003FBF48 /* Experience.rcproject in Sources */,
 				1B89AF252A4A72BC00C44F8D /* YoloObjectDetect.swift in Sources */,
@@ -431,6 +667,7 @@
 		};
 		1B01EBEB2A3405E2003FBF48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5CE93ED6C50EF2E89079EF1 /* Pods-Jarvis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -466,6 +703,7 @@
 		};
 		1B01EBEC2A3405E2003FBF48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10DF7EFD5497A0AAAF5946F8 /* Pods-Jarvis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -501,6 +739,7 @@
 		};
 		1B01EBEE2A3405E2003FBF48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B50343B2AF018DFB5A5039F /* Pods-JarvisTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -521,6 +760,7 @@
 		};
 		1B01EBEF2A3405E2003FBF48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F6C84A8D27CB5C839F7C3E0 /* Pods-JarvisTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -541,6 +781,7 @@
 		};
 		1B01EBF12A3405E2003FBF48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1366D9244334D3938C32189D /* Pods-Jarvis-JarvisUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -559,6 +800,7 @@
 		};
 		1B01EBF22A3405E2003FBF48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7635A1630ADAE9B9C3BB17BA /* Pods-Jarvis-JarvisUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -615,6 +857,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1BAE94802A5231F000AE9C09 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1BAE94812A5231F000AE9C09 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1BAE94802A5231F000AE9C09 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1B01EBBC2A3405DF003FBF48 /* Project object */;
 }
