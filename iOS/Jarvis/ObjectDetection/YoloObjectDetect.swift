@@ -63,6 +63,7 @@ class YoloObjectDetect: NSObject, ObjectDetectProtocol{
         let objectRecognition = VNCoreMLRequest(model: visionModel, completionHandler: { (request, error) in
             
             // Insert any non-UI updates here on the helper Queue
+            self.objects = []
             let observations = request.results?.parseAsHighestConfidenceObservation(with: self.parent, size: self.frameSize)
             if let obs = observations {
                 for obj in obs {

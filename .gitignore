@@ -452,3 +452,4 @@ $RECYCLE.BIN/
 Pods/
 
 # End of https://www.toptal.com/developers/gitignore/api/cocoapods
+iOS/Jarvis/API.swift

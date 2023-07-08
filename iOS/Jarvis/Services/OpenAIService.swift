@@ -15,7 +15,7 @@ class OpenAIService{
     /// System message to send to instruct the user
     private static let systemMessage = "You are Jarvis, a helpful voice assistant. You talk briefly and to the point. In addition to any questions, the user you serve will, at times, give you an input in the variable UserImage: {list of labels describing the objects in a real-life image}. At those times, answer the user's questions in context of that latest image. Reply as a voice assistant would and in the language that the question was asked in. Do not say you cannot do something. Instead, give it your best shot. Begin!"
     /// API endpoint to connect to OpenAI to
-    private let openAI = OpenAI(apiToken: "YOUR_TOKEN_HERE")
+    private let openAI = OpenAI(apiToken: API.openAI)
     /// Agent language used for responses as a two letter code
     private let lang: String
     /// Creates a translator for use in translation

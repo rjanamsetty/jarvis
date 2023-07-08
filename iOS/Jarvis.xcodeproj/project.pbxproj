@@ -26,6 +26,7 @@
 		1BAE94882A549F2E00AE9C09 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */; };
 		1BAE948A2A54AD1E00AE9C09 /* ARContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */; };
 		1BAE948C2A54FDF000AE9C09 /* AudioRecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE948B2A54FDF000AE9C09 /* AudioRecordingService.swift */; };
+		1BAE94952A59091000AE9C09 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94942A59091000AE9C09 /* API.swift */; };
 		3E5D0F7420E4124A281901B5 /* Pods_Jarvis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A608ABFF45BF6C25FA55A6 /* Pods_Jarvis.framework */; };
 		FAADA1573E6D2C6E0678F761 /* Pods_JarvisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA5111C298A7629995BC407 /* Pods_JarvisTests.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContainerView.swift; sourceTree = "<group>"; };
 		1BAE948B2A54FDF000AE9C09 /* AudioRecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingService.swift; sourceTree = "<group>"; };
+		1BAE94942A59091000AE9C09 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1CA5111C298A7629995BC407 /* Pods_JarvisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JarvisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6C84A8D27CB5C839F7C3E0 /* Pods-JarvisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisTests.release.xcconfig"; path = "Target Support Files/Pods-JarvisTests/Pods-JarvisTests.release.xcconfig"; sourceTree = "<group>"; };
 		7635A1630ADAE9B9C3BB17BA /* Pods-Jarvis-JarvisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis-JarvisUITests.release.xcconfig"; path = "Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				1B01EBCB2A3405DF003FBF48 /* Experience.rcproject */,
 				1B01EBCD2A3405E1003FBF48 /* Assets.xcassets */,
 				1B01EBCF2A3405E1003FBF48 /* Preview Content */,
+				1BAE94942A59091000AE9C09 /* API.swift */,
 			);
 			path = Jarvis;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				1B01EBC82A3405DF003FBF48 /* AppDelegate.swift in Sources */,
 				1BAE948C2A54FDF000AE9C09 /* AudioRecordingService.swift in Sources */,
 				1BAE94862A525C0200AE9C09 /* TranslationService.swift in Sources */,
+				1BAE94952A59091000AE9C09 /* API.swift in Sources */,
 				1BAE94882A549F2E00AE9C09 /* ToolbarView.swift in Sources */,
 				1B01EBFA2A365A54003FBF48 /* ObjectDetectProtocol.swift in Sources */,
 				1B01EBCC2A3405DF003FBF48 /* Experience.rcproject in Sources */,
@@ -677,7 +681,8 @@
 				DEVELOPMENT_TEAM = Z2FJ56U489;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to enable the AR Expereince";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use the microphone to allow for voice-based interactions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
@@ -713,7 +718,8 @@
 				DEVELOPMENT_TEAM = Z2FJ56U489;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to enable the AR Expereince";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use the microphone to allow for voice-based interactions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;

@@ -21,7 +21,7 @@ struct HighestConfidenceObservation {
     private let view: ARView
     /// `Logger` to log within the class
     private let log = Logger(subsystem: AppDelegate.subsystem, category: "HighestConfidenceObservation")
-    ///  Label associated with the highest confidence match
+    /// Label associated with the highest confidence match
     let label: String
     /// The confidence of the match
     let confidence: Float
@@ -55,16 +55,18 @@ struct HighestConfidenceObservation {
         
         // Show all debug symbols
         log.debug("Object Name: \(label), \(confidence * 100)")
+        /*
         log.debug("Center: \(center.debugDescription)")
         log.debug("Bounding Box: \(boundingBox.debugDescription)")
         log.debug("Raycast: \(raycastHit.debugDescription)")
+         */
         
         // Generate the display string
         let displayText = "\(label)\n%\(confidence * 100)"
         let material = SimpleMaterial(color: .randomColor, roughness: 1, isMetallic: true)
         let mesh = MeshResource.generateText(displayText,
                                              extrusionDepth: 0.001,
-                                             font: UIFont(name: "Helvetica Neue", size: 0.05)!,
+                                             font: UIFont(name: "HelveticaNeue", size: 0.05)!,
                                              containerFrame: CGRect.zero,
                                              alignment: .center,
                                              lineBreakMode: .byCharWrapping)

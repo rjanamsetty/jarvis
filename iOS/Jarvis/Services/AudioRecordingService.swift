@@ -24,7 +24,7 @@ class AudioRecordingService: NSObject, ObservableObject {
     /// Protocol used for object detection
     private let objectDetector: ObjectDetectProtocol
     /// File name of the saved recording
-    let audioFilename = "recorded.mp3"
+    let audioFilename = "recorded.m4a"
     /// Denotes whether or not the audio is recoding
     var isRecording = false
     /// Denotes whether or not the system is processing a request
@@ -74,8 +74,8 @@ class AudioRecordingService: NSObject, ObservableObject {
             let settings: [String: Any] = [
                 AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                 AVSampleRateKey: 44100.0,
-                AVNumberOfChannelsKey: 2,
-                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+                AVNumberOfChannelsKey: 1,
+                AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue
             ]
             
             // Create and start audio recorder
