@@ -9,17 +9,24 @@ import SwiftUI
 import RealityKit
 
 struct ToolbarView: View {
-    @ObservedObject var audio: AudioRecordingService
+    @ObservedObject var controller: ServicesController
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 50) {
             Button {
-                audio.toggleRecording()
+                controller.toggleRecording()
                 print("Tapped")
             } label: {
-                Image(
-                    systemName: audio.isRecording ? "stop.circle" : "waveform.circle")
-                    .imageScale(.large)
+                if controller.status == .recording {
+                    Image(systemName: "stop.circle")
+                        .imageScale(.large)
+                } else if controller.status == .processing {
+                    ProgressView()
+                        .controlSize(.large)
+                } else {
+                    Image(systemName: "waveform.circle")
+                        .imageScale(.large)
+                }
             }
         }
         .padding(.bottom, 15)
@@ -33,6 +40,6 @@ struct ToolbarView: View {
 
 struct ToolbarView_Previews: PreviewProvider {
     static var previews: some View {
-        ToolbarView(audio: AudioRecordingService(ARView(frame: .zero)))
+        ToolbarView(controller: ServicesController(UIPreviewObjectDetector()))
     }
 }

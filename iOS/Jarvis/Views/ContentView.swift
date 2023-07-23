@@ -21,7 +21,7 @@ struct ContentView : View {
             arContainer
             VStack {
                 Spacer()
-                ToolbarView(audio: AudioRecordingService(arContainer.arView))
+                ToolbarView(controller: ServicesController( YOLOv8ObjectDetect(arContainer.arView)))
             }
         }
         .edgesIgnoringSafeArea(.all)

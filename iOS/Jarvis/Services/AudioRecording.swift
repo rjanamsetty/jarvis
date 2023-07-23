@@ -11,12 +11,14 @@ import os
 import RealityKit
 
 /// Service for acessing the hardware's mic
-class AudioRecordingService: NSObject, ObservableObject {
+class AudioRecording: NSObject, ObservableObject {
+    
+    // MARK: - Properties
     
     /// `Logger` to log any issues in this class
     private let log = Logger(subsystem: AppDelegate.subsystem, category: "AudioRecordingService")
     /// API Access for OpenAI APIs
-    private let openAI = OpenAIService(lang: "en")
+    private let openAI = OpenAIHandler(lang: "en")
     /// Recorder to record audio through device's mic
     private var audioRecorder: AVAudioRecorder?
     /// ARView representing the scene
@@ -30,12 +32,20 @@ class AudioRecordingService: NSObject, ObservableObject {
     /// Denotes whether or not the system is processing a request
     @Published var isProcessing = false
     
+    // MARK: - Initialization
+    
     /// Creates an `AudioRecordingService` within the given `ARView`
     /// - Parameter view: The `ARView` in which the scene takes place
     init(_ view: ARView) {
         self.view = view
-        self.objectDetector = YoloObjectDetect(view)
+        do {
+            self.objectDetector = try YOLOv8ObjectDetect(view)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
+    
+    // MARK: - Public Methods
     
     /// Toggles the audio recording.
     func toggleRecording() {
@@ -61,6 +71,8 @@ class AudioRecordingService: NSObject, ObservableObject {
             return nil
         }
     }
+    
+    // MARK: - Private Methods
     
     /// Starts the recording
     private func startRecording() {
@@ -107,14 +119,14 @@ class AudioRecordingService: NSObject, ObservableObject {
         Task {
             var transcription: String
             if let potentialAudio = getRecordedAudioData() {
-                transcription = await openAI.sendTranscritpion(data: potentialAudio, fileName: audioFilename)
+                transcription = try await openAI.sendTranscritpion(data: potentialAudio, fileName: audioFilename)
             } else {
                 transcription = ""
                 log.error("Transcription not available")
             }
-            let description = objectDetector.performVisionFromARView(view).joined(separator: ", ")
+            let description = try objectDetector.performVision(view).joined(separator: ", ")
             if (transcription != ""){
-                let response = await openAI.sendChat(prompt: transcription, description: description)
+                let response = try await openAI.sendChat(prompt: transcription, description: description)
                 log.debug("SUCCESS: \(response)")
             }
             isProcessing = false

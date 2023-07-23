@@ -6,21 +6,24 @@
 //
 
 import Foundation
-import UIKit
 import Vision
-import ARKit
 import RealityKit
+import ARKit
 import os
 
-/// Contains infromation about the highest confidence object match when performing object detection
+/// Contains information about the highest confidence object match when performing object detection
 struct HighestConfidenceObservation {
     
-    /// Raw `VNClassificationObservation` object related with this object
+    // MARK: - Properties
+    
+    /// Raw `VNClassificationObservation` object related to this object
     private let observation: VNClassificationObservation
     /// `ARView` associated with this observation
     private let view: ARView
     /// `Logger` to log within the class
     private let log = Logger(subsystem: AppDelegate.subsystem, category: "HighestConfidenceObservation")
+    /// The font name
+    private let fontName = "HelveticaNeue"
     /// Label associated with the highest confidence match
     let label: String
     /// The confidence of the match
@@ -32,12 +35,16 @@ struct HighestConfidenceObservation {
     /// Creates a raycast from the center of the bounding box to the 3D world
     let raycast: [ARRaycastResult]
     
-    /// Contains infromation about the highest confidence object match when performing object detection
+    // MARK: - Initialization
+    
+    /// Contains information about the highest confidence object match when performing object detection
     /// - Parameters:
     ///   - recognizedObservation: `VNRecognizedObjectObservation` containing information about the detected object
     ///   - view: `ARView` associated with where the observation took place
-    init(from recognizedObservation: VNRecognizedObjectObservation, with container: ARView, size: CGSize){
-        self.view = container
+    ///   - size: Size of the frame
+    /// - Throws: An error if the font is missing
+    init(from recognizedObservation: VNRecognizedObjectObservation, with view: ARView, size: CGSize) {
+        self.view = view
         self.observation = recognizedObservation.labels[0]
         self.label = observation.identifier
         self.boundingBox = VNImageRectForNormalizedRect(recognizedObservation.boundingBox,
@@ -47,26 +54,26 @@ struct HighestConfidenceObservation {
         self.raycast = view.raycast(from: center, allowing: .estimatedPlane, alignment: .any)
     }
     
+    // MARK: - Public Methods
+    
     /// Creates a 3D text visualization to view the results of the object detection
-    func create3DTextVisualization(){
-        
-        // Choose the closest raycast hit and add it to the visualization
+    func create3DTextVisualization() {
         guard let raycastHit = raycast.first else { return }
         
         // Show all debug symbols
-        log.debug("Object Name: \(label), \(confidence * 100)")
-        /*
-        log.debug("Center: \(center.debugDescription)")
-        log.debug("Bounding Box: \(boundingBox.debugDescription)")
-        log.debug("Raycast: \(raycastHit.debugDescription)")
-         */
+        log.debug("Object Name: \(label), \(confidence * 100)")
         
         // Generate the display string
         let displayText = "\(label)\n%\(confidence * 100)"
+        guard let font = UIFont(name: fontName, size: 0.05) else {
+            log.error("Font '\(fontName)' is missing")
+            return
+        }
+        
         let material = SimpleMaterial(color: .randomColor, roughness: 1, isMetallic: true)
         let mesh = MeshResource.generateText(displayText,
                                              extrusionDepth: 0.001,
-                                             font: UIFont(name: "HelveticaNeue", size: 0.05)!,
+                                             font: font,
                                              containerFrame: CGRect.zero,
                                              alignment: .center,
                                              lineBreakMode: .byCharWrapping)
@@ -79,34 +86,38 @@ struct HighestConfidenceObservation {
         anchorEntity.addChild(modelEntity)
         view.scene.addAnchor(anchorEntity)
     }
-    
 }
+
+// MARK: - Extensions
 
 extension Array where Element: VNObservation {
     
-    /// Converts an array of `VNObservation` objects as `VNRecognizedObjectObservation` objects when performing object detection
+    /// Converts an array of `VNObservation` objects to `VNRecognizedObjectObservation` objects when performing object detection
     /// - Returns: An array of `VNRecognizedObjectObservation` objects
     func parseAsVNRecognizedObjectObservation() -> [VNRecognizedObjectObservation] {
-        return self.compactMap { $0 as? VNRecognizedObjectObservation }
+        return compactMap { $0 as? VNRecognizedObjectObservation }
     }
     
-    /// Converts an array of `VNObservation` objects as `HighestConfidenceObservation` objects when performing object detection
-    /// - Parameter view: `ARViewContainer` for which the observation takes place in
+    /// Converts an array of `VNObservation` objects to `HighestConfidenceObservation` objects when performing object detection
+    /// - Parameters:
+    ///   - parent: `ARView` for which the observation takes place in
+    ///   - size: Size of the frame
     /// - Returns: An array of `HighestConfidenceObservation` objects
     func parseAsHighestConfidenceObservation(with parent: ARView, size: CGSize) -> [HighestConfidenceObservation] {
-        return self.parseAsVNRecognizedObjectObservation().compactMap { obs in HighestConfidenceObservation(from: obs, with: parent, size: size)}
+        return parseAsVNRecognizedObjectObservation().compactMap { obs in
+            HighestConfidenceObservation(from: obs, with: parent, size: size)
+        }
     }
-    
 }
 
 extension UIColor {
     
-    /// A random color
-    static var randomColor : UIColor{
+    /// Generates a random color
+    static var randomColor: UIColor {
         return UIColor(
-            red:   .random(),
+            red: .random(),
             green: .random(),
-            blue:  .random(),
+            blue: .random(),
             alpha: 1.0
         )
     }
@@ -115,7 +126,7 @@ extension UIColor {
 extension CGFloat {
     
     /// Generates a random float
-    /// - Returns: random float
+    /// - Returns: Random float
     static func random() -> CGFloat {
         return CGFloat(arc4random()) / CGFloat(UInt32.max)
     }

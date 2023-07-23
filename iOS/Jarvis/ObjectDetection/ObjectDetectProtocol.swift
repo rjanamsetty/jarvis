@@ -16,76 +16,88 @@ import os
 /// A protocol for AR object detection
 protocol ObjectDetectProtocol where Self: NSObject {
     
+    // MARK: - Properties
+    
     /// The parent view associated with the view
     var parent: ARView { get set }
     /// The size of the raw frame captured from the camera
-    var frameSize: CGSize { get set}
+    var frameSize: CGSize { get set }
     /// List of objects detected in the scene
-    var objects: [String] { get set}
+    var objects: [String] { get set }
     
-    /// Performs the requested computer vision tasks for the given image
+    // MARK: - Protocol Methods
+    
+    /// Performs a vision request from the given image
     /// - Parameter cvPixelBuffer: The raw camera frame
     /// - Returns: List of objects detected in the scene
-    func performVision(_ cvPixelBuffer: CVPixelBuffer) -> [String]
+    func performVision(_ cvPixelBuffer: CVPixelBuffer) throws -> [String]
     
-    @discardableResult
     /// Sets up the pipeline for the computer vision task
-    /// - Returns: An error detailing the setup, if applicable
-    func setupVision() -> NSError?
+    func setupVision() throws
     
     /// Performs a vision request from a tap action though a coordinator
     /// - Parameter sender: Sender of this function
     @objc func tapGestureMethod(_ sender : UITapGestureRecognizer)
-    
 }
 
 extension ObjectDetectProtocol {
+    
+    // MARK: - Extensions
     
     /// Gets the current orientation of the device
     /// - Returns: The orientation of the current device
     func exifOrientationFromDeviceOrientation() -> CGImagePropertyOrientation {
         let curDeviceOrientation = UIDevice.current.orientation
         let exifOrientation: CGImagePropertyOrientation
+        
         switch curDeviceOrientation {
-        case UIDeviceOrientation.portraitUpsideDown:  // Device oriented vertically, home button on the top
+        case .portraitUpsideDown:  // Device oriented vertically, home button on the top
             exifOrientation = .left
-        case UIDeviceOrientation.landscapeLeft:       // Device oriented horizontally, home button on the right
+        case .landscapeLeft:       // Device oriented horizontally, home button on the right
             exifOrientation = .upMirrored
-        case UIDeviceOrientation.landscapeRight:      // Device oriented horizontally, home button on the left
+        case .landscapeRight:      // Device oriented horizontally, home button on the left
             exifOrientation = .down
-        case UIDeviceOrientation.portrait:            // Device oriented vertically, home button on the bottom
+        case .portrait:            // Device oriented vertically, home button on the bottom
             exifOrientation = .up
         default:
             exifOrientation = .up
         }
+        
         return exifOrientation
     }
     
-    /// Performs a vision request from a ARViiew
-    /// - Parameter view: ARView associated with the vision request
+    /// Performs a vision request from an `ARView`
+    /// - Parameter arView: ARView associated with the vision request. Defaults to `parent`
     /// - Returns: List of objects detected in the scene
-    func performVisionFromARView(_ view: ARView) -> [String] {
-        let log = Logger(subsystem: AppDelegate.subsystem, category: "ObjectDetectProtocol")
-        guard let currentFrame = view.session.currentFrame else {
-            log.debug("No ARFrame Found")
-            return []
+    func performVision(_ arView: ARView) throws -> [String] {
+        guard let currentFrame = arView.session.currentFrame else {
+            throw ObjectDetectionError.noARFrameFound
         }
         frameSize = currentFrame.camera.imageResolution
-        return performVision(currentFrame.capturedImage)
+        return try performVision(currentFrame.capturedImage)
+    }
+    
+    /// Performs a vision request from an `ARView` from the parent view
+    /// - Returns: List of objects detected in the scene
+    func performVision() throws -> [String] {
+        return try performVision(parent)
     }
     
     @discardableResult
     /// Performs a vision request from a tap action
     /// - Parameter sender: Sender of this function
     /// - Returns: List of objects detected in the scene
-    func performVisionFromTap(_ sender : UITapGestureRecognizer) -> [String] {
-        let log = Logger(subsystem: AppDelegate.subsystem, category: "ObjectDetectProtocol")
-        log.debug("Screen Tapped")
+    func performVision(_ sender: UITapGestureRecognizer) throws -> [String] {
         guard let sceneView = sender.view as? ARView else {
-            log.debug("Sender is not a AR View")
-            return []
+            throw ObjectDetectionError.senderNotARView
         }
-        return performVisionFromARView(sceneView)
+        return try performVision(sceneView)
     }
     
+    /// Logs the `Error` and throws it
+    /// - Parameter error: The `Error` to be logged
+    /// - Returns: The given `Error` to be able to thrown in one line
+    private func logAndThrow(_ error: Error) -> Error {
+        return SystemMonitor.logAndThrow(with: error, at: "ObjectDetectProtocol")
+    }
 }

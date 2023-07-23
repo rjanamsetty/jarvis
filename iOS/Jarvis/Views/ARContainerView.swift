@@ -22,8 +22,5 @@ struct ARContainerView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {}
-    
-    func makeCoordinator() -> ObjectDetectProtocol {
-        return YoloObjectDetect(arView)
-    }
+
 }

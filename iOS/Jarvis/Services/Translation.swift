@@ -10,8 +10,12 @@ import MLKit
 import os
 
 /// Service for accessing GoogleTranslate on device API
-class TranslationService{
+actor Translation{
     
+    // MARK: - Properties
+    
+    /// App Subsystem for logging
+    private static let subsytem = "com.rjanamsetty.jarvis"
     /// Language to translate from
     private var fromLang: String!
     /// Language to translate to
@@ -19,15 +23,21 @@ class TranslationService{
     /// Translator currently used
     private var translator: Translator!
     /// Logger to log any issues
-    private let log = Logger(subsystem: AppDelegate.subsystem, category: "TranslationService")
+    private let log = Logger(subsystem: subsytem, category: "TranslationService")
+    
+    // MARK: - Initialization
     
     /// Initializes the translation service and dowloads the model, if necesary
     /// - Parameters:
     ///   - fromRequest: Language to translate from as a two letter code
     ///   - toRequest: Language to translate to as a two letter code
     init(from fromRequest: String = "en", to toRequest: String = "en") {
-        loadTranslator(from: fromRequest, to: toRequest)
+        Task{
+            await loadTranslator(from: fromRequest, to: toRequest)
+        }
     }
+    
+    // MARK: - Public Methods
     
     /// Translates the given string from the given language to the desired language
     /// - Parameter message: Message to translate
@@ -51,11 +61,13 @@ class TranslationService{
         return translated
     }
     
+    // MARK: - Private Methods
+    
     /// Loads a translator to translate between the two given languages. Discards current translator
     /// - Parameters:
     ///   - fromRequest: Language to translate from as a two letter code
     ///   - toRequest: Language to translate to as a two letter code
-    func loadTranslator(from fromRequest: String, to toRequest: String){
+    private func loadTranslator(from fromRequest: String, to toRequest: String){
         
         // If the language is the same, then don't do anything
         if (fromRequest == toRequest){
