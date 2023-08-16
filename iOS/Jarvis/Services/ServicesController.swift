@@ -10,6 +10,7 @@ import AVFoundation
 import os
 import RealityKit
 import Foundation
+import OpenAI
 
 class ServicesController: NSObject, ObservableObject {
     
@@ -62,6 +63,10 @@ class ServicesController: NSObject, ObservableObject {
     @Published var status = ServicesStatus.idle
     /// The response given by app, whether it be by ChatGPT or otherwise
     @Published var response = ""
+    /// Whether or not the settings is in view
+    @Published var showSettings = false
+    /// Whether or not the responses is in view
+    @Published var showResponse = false
     
     // MARK: - Initialization
     
@@ -123,8 +128,9 @@ class ServicesController: NSObject, ObservableObject {
                 log.debug("Recording stopped")
                 let description = try objectDetector.performVision().joined(separator: ", ")
                 try checkStopErrors()
-                let response = try await openAI.sendChat(prompt: transcription, description: description)
+                response = try await openAI.sendChat(prompt: transcription, description: description)
                 status = .idle
+                showResponse = true
             } catch {
                 logError(error, message: "Failed to process recording")
             }

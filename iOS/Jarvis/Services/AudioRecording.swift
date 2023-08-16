@@ -38,11 +38,10 @@ class AudioRecording: NSObject, ObservableObject {
     /// - Parameter view: The `ARView` in which the scene takes place
     init(_ view: ARView) {
         self.view = view
-        do {
-            self.objectDetector = try YOLOv8ObjectDetect(view)
-        } catch {
-            fatalError(error.localizedDescription)
+        guard let detectorUnwrapped = YOLOv8ObjectDetect(view) else {
+            fatalError("Error Initializing object detector")
         }
+        self.objectDetector = detectorUnwrapped
     }
     
     // MARK: - Public Methods

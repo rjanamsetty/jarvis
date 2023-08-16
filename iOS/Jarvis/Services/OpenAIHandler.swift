@@ -43,10 +43,10 @@ actor OpenAIHandler{
     private let openAI = OpenAI(apiToken: API.openAI)
     /// Agent language used for responses as a two letter code
     private let lang: String
-    /// Message histroy sent to agent
-    private var messages = [Chat(role: .system, content: systemMessage)]
     /// `Logger` to log any issues in this class
     private let log = Logger(subsystem: subsytem, category: "OpenAIService")
+    /// Message histroy sent to agent
+    var messages = [Chat(role: .system, content: systemMessage)]
     
     // MARK: - Initialization
     
@@ -66,7 +66,7 @@ actor OpenAIHandler{
     func sendChat(prompt: String, description: String = "") async throws -> String {
         
         // Create chat request to send
-        var message = description.isEmpty ? prompt : "UserImage: \(description)\n\n\(prompt)"
+        let message = description.isEmpty ? prompt : "UserImage: \(description)\n\n\(prompt)"
         messages.append(Chat(role: .user, content: message))
         let query = ChatQuery(model: .gpt3_5Turbo, messages: self.messages)
         

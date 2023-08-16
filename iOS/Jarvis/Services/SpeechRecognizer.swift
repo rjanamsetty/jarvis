@@ -9,6 +9,7 @@ import AVFoundation
 import Speech
 import SwiftUI
 import Foundation
+import os
 
 /// A helper for transcribing speech to text using `SFSpeechRecognizer` and `AVAudioEngine`.
 actor SpeechRecognizer {
@@ -57,6 +58,8 @@ actor SpeechRecognizer {
     private let recognizer: SFSpeechRecognizer?
     /// Indicated whether the speech recognizer is currently transcribing speech.
     private var isTranscribing = false
+    /// `Logger` to log details in this class
+    private let log = Logger(subsystem: "com.rjanamsetty.jarvis", category: "SpeechRecognizer")
     
     // MARK: - Initialization
     
@@ -120,6 +123,7 @@ actor SpeechRecognizer {
         audioEngine = nil
         request = nil
         task = nil
+        log.debug("Current Transcript: \(self.transcript)")
         return transcript
     }
     

@@ -15,6 +15,16 @@ import os
 struct ContentView : View {
     
     private let arContainer = ARContainerView()
+    private var objectDetector: ObjectDetectProtocol
+    private var servicesController: ServicesController
+    
+    init() {
+        guard let detectorUnwrapped = YOLOv8ObjectDetect(arContainer.arView) else {
+            fatalError("Error Initializing object detector")
+        }
+        self.objectDetector = detectorUnwrapped
+        self.servicesController = ServicesController(objectDetector)
+    }
     
     var body: some View {
         ZStack() {
@@ -24,7 +34,7 @@ struct ContentView : View {
                 ToolbarView(controller: ServicesController( YOLOv8ObjectDetect(arContainer.arView)))
             }
         }
-        .edgesIgnoringSafeArea(.all)
+        .edgesIgnoringSafeArea([.top, .leading, .trailing])
     }
 }
 

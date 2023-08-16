@@ -32,6 +32,8 @@
 		1BAE948C2A54FDF000AE9C09 /* AudioRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE948B2A54FDF000AE9C09 /* AudioRecording.swift */; };
 		1BAE94952A59091000AE9C09 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94942A59091000AE9C09 /* API.swift */; };
 		1BAE94972A5B386200AE9C09 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94962A5B386200AE9C09 /* SpeechRecognizer.swift */; };
+		1BF6BD692A7EF00800F9319A /* ResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6BD682A7EF00800F9319A /* ResponseView.swift */; };
+		1BF6BD6B2A7EF3B700F9319A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6BD6A2A7EF3B700F9319A /* SettingsView.swift */; };
 		3E5D0F7420E4124A281901B5 /* Pods_Jarvis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A608ABFF45BF6C25FA55A6 /* Pods_Jarvis.framework */; };
 		FAADA1573E6D2C6E0678F761 /* Pods_JarvisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA5111C298A7629995BC407 /* Pods_JarvisTests.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,8 @@
 		1BAE948B2A54FDF000AE9C09 /* AudioRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecording.swift; sourceTree = "<group>"; };
 		1BAE94942A59091000AE9C09 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1BAE94962A5B386200AE9C09 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		1BF6BD682A7EF00800F9319A /* ResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseView.swift; sourceTree = "<group>"; };
+		1BF6BD6A2A7EF3B700F9319A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1CA5111C298A7629995BC407 /* Pods_JarvisTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JarvisTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6C84A8D27CB5C839F7C3E0 /* Pods-JarvisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisTests.release.xcconfig"; path = "Target Support Files/Pods-JarvisTests/Pods-JarvisTests.release.xcconfig"; sourceTree = "<group>"; };
 		7635A1630ADAE9B9C3BB17BA /* Pods-Jarvis-JarvisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Jarvis-JarvisUITests.release.xcconfig"; path = "Target Support Files/Pods-Jarvis-JarvisUITests/Pods-Jarvis-JarvisUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				1B01EBC92A3405DF003FBF48 /* ContentView.swift */,
 				1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */,
 				1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */,
+				1BF6BD682A7EF00800F9319A /* ResponseView.swift */,
+				1BF6BD6A2A7EF3B700F9319A /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -526,11 +532,13 @@
 				1B01EBCA2A3405DF003FBF48 /* ContentView.swift in Sources */,
 				1BAE948A2A54AD1E00AE9C09 /* ARContainerView.swift in Sources */,
 				1B78C3862A6B4752001DD8EE /* UIPreviewObjectDetection.swift in Sources */,
+				1BF6BD6B2A7EF3B700F9319A /* SettingsView.swift in Sources */,
 				1B89AF232A4A695F00C44F8D /* HighestConfidenceObservation.swift in Sources */,
 				1BAE947C2A520CF100AE9C09 /* OpenAIHandler.swift in Sources */,
 				1B78C3842A69E7CC001DD8EE /* ObjectDetectionError.swift in Sources */,
 				1B01EBC82A3405DF003FBF48 /* AppDelegate.swift in Sources */,
 				1BAE948C2A54FDF000AE9C09 /* AudioRecording.swift in Sources */,
+				1BF6BD692A7EF00800F9319A /* ResponseView.swift in Sources */,
 				1B8D5E802A634E5D00BE2CF4 /* ServicesController.swift in Sources */,
 				1BAE94972A5B386200AE9C09 /* SpeechRecognizer.swift in Sources */,
 				1BAE94862A525C0200AE9C09 /* Translation.swift in Sources */,
@@ -703,6 +711,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to enable the AR Expereince";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use the microphone to allow for voice-based interactions";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We use speech recognition to allow for voice-based interactions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
@@ -740,6 +749,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to enable the AR Expereince";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use the microphone to allow for voice-based interactions";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We use speech recognition to allow for voice-based interactions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
