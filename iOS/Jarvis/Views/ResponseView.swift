@@ -19,14 +19,12 @@ struct ResponseView: View {
             Text("Response")
                 .font(.title)
                 .fontWeight(.bold)
-                .foregroundColor(Color.black)
                 .padding(.bottom, 2)
             ScrollView {
                 Text(controller.response)
                     .font(.body)
                     .fontWeight(.regular)
                     .padding(.bottom, 10)
-                    .foregroundColor(.black)
             }
             Spacer()
         }

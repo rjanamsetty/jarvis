@@ -30,7 +30,6 @@
 		1BAE94882A549F2E00AE9C09 /* ToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */; };
 		1BAE948A2A54AD1E00AE9C09 /* ARContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */; };
 		1BAE948C2A54FDF000AE9C09 /* AudioRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE948B2A54FDF000AE9C09 /* AudioRecording.swift */; };
-		1BAE94952A59091000AE9C09 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94942A59091000AE9C09 /* API.swift */; };
 		1BAE94972A5B386200AE9C09 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAE94962A5B386200AE9C09 /* SpeechRecognizer.swift */; };
 		1BF6BD692A7EF00800F9319A /* ResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6BD682A7EF00800F9319A /* ResponseView.swift */; };
 		1BF6BD6B2A7EF3B700F9319A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF6BD6A2A7EF3B700F9319A /* SettingsView.swift */; };
@@ -78,12 +77,12 @@
 		1B89AF222A4A695F00C44F8D /* HighestConfidenceObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighestConfidenceObservation.swift; sourceTree = "<group>"; };
 		1B89AF242A4A72BC00C44F8D /* YOLOv8ObjectDetect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YOLOv8ObjectDetect.swift; sourceTree = "<group>"; };
 		1B8D5E7F2A634E5D00BE2CF4 /* ServicesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesController.swift; sourceTree = "<group>"; };
+		1BA2D20E2A8D74C600A4EA1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1BAE947B2A520CF100AE9C09 /* OpenAIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIHandler.swift; sourceTree = "<group>"; };
 		1BAE94852A525C0200AE9C09 /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		1BAE94872A549F2E00AE9C09 /* ToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarView.swift; sourceTree = "<group>"; };
 		1BAE94892A54AD1E00AE9C09 /* ARContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContainerView.swift; sourceTree = "<group>"; };
 		1BAE948B2A54FDF000AE9C09 /* AudioRecording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecording.swift; sourceTree = "<group>"; };
-		1BAE94942A59091000AE9C09 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		1BAE94962A5B386200AE9C09 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		1BF6BD682A7EF00800F9319A /* ResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseView.swift; sourceTree = "<group>"; };
 		1BF6BD6A2A7EF3B700F9319A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -149,6 +148,7 @@
 		1B01EBC62A3405DF003FBF48 /* Jarvis */ = {
 			isa = PBXGroup;
 			children = (
+				1BA2D20E2A8D74C600A4EA1D /* Info.plist */,
 				1BAE948F2A58CBF800AE9C09 /* Views */,
 				1BAE948E2A58CBD700AE9C09 /* ObjectDetection */,
 				1BAE948D2A58CB0A00AE9C09 /* Services */,
@@ -157,7 +157,6 @@
 				1B01EBCB2A3405DF003FBF48 /* Experience.rcproject */,
 				1B01EBCD2A3405E1003FBF48 /* Assets.xcassets */,
 				1B01EBCF2A3405E1003FBF48 /* Preview Content */,
-				1BAE94942A59091000AE9C09 /* API.swift */,
 			);
 			path = Jarvis;
 			sourceTree = "<group>";
@@ -542,7 +541,6 @@
 				1B8D5E802A634E5D00BE2CF4 /* ServicesController.swift in Sources */,
 				1BAE94972A5B386200AE9C09 /* SpeechRecognizer.swift in Sources */,
 				1BAE94862A525C0200AE9C09 /* Translation.swift in Sources */,
-				1BAE94952A59091000AE9C09 /* API.swift in Sources */,
 				1BAE94882A549F2E00AE9C09 /* ToolbarView.swift in Sources */,
 				1B01EBFA2A365A54003FBF48 /* ObjectDetectProtocol.swift in Sources */,
 				1B01EBCC2A3405DF003FBF48 /* Experience.rcproject in Sources */,
@@ -709,22 +707,27 @@
 				DEVELOPMENT_TEAM = Z2FJ56U489;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jarvis/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Jarvis AR";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to enable the AR Expereince";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use the microphone to allow for voice-based interactions";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We use speech recognition to allow for voice-based interactions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rjanamsetty.jarvis;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rjanamsetty.jarvisar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -747,22 +750,27 @@
 				DEVELOPMENT_TEAM = Z2FJ56U489;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jarvis/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Jarvis AR";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to enable the AR Expereince";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We use the microphone to allow for voice-based interactions";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "We use speech recognition to allow for voice-based interactions";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rjanamsetty.jarvis;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rjanamsetty.jarvisar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

@@ -91,6 +91,7 @@ class YOLOv8ObjectDetect: NSObject, ObjectDetectProtocol{
                 }
                 
                 // Insert any UI updates on the main queue
+                /*
                 DispatchQueue.main.async {
                     if let obs = observations {
                         for obj in obs {
@@ -98,6 +99,7 @@ class YOLOv8ObjectDetect: NSObject, ObjectDetectProtocol{
                         }
                     }
                 }
+                 */
             }
             
             objectRecognition.imageCropAndScaleOption = .centerCrop

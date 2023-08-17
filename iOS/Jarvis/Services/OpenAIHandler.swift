@@ -19,6 +19,7 @@ actor OpenAIHandler{
         case chatRequestFailed
         case transcriptionRequestFailed
         case noChatResponse
+        case noAPIKey
         
         /// Error message assoicated with `OpenAIError`
         var errorDescription: String? {
@@ -29,6 +30,8 @@ actor OpenAIHandler{
                 return NSLocalizedString("An error occurred while sending the OpenAI whisper request", comment: "")
             case .noChatResponse:
                 return NSLocalizedString("No chat request was returned by the OpenAI chat request", comment: "")
+            case .noAPIKey:
+                return NSLocalizedString("No OpenAI API key was given in Config.xcconfig", comment: "")
             }
         }
     }
@@ -40,7 +43,7 @@ actor OpenAIHandler{
     /// System message to send to instruct the user
     private static let systemMessage = "You're Jarvis, a concise and helpful voice assistant. In addition to questions, the user may provide an image with labels in the variable UserImage: {list of labels describing the objects in a real-life image}. Answer questions in the context of the latest image, using the language the question was asked in. Provide your best possible response without indicating any limitations. Begin!"
     /// API endpoint to connect to OpenAI to
-    private let openAI = OpenAI(apiToken: API.openAI)
+    private var openAI: OpenAI! = nil
     /// Agent language used for responses as a two letter code
     private let lang: String
     /// `Logger` to log any issues in this class
@@ -54,6 +57,15 @@ actor OpenAIHandler{
     /// - Parameter lang: The language of the agent
     init(lang: String) {
         self.lang = lang
+        guard let infoDictionary: [String: Any] = Bundle.main.infoDictionary else {
+            log.error("Error: Info.plist not found")
+            return
+        }
+        guard let apiKey: String = infoDictionary["OpenAPIKey"] as? String else {
+            log.error("Error: OpenAPIKey not found")
+            return
+        }
+        self.openAI = OpenAI(apiToken: apiKey)
     }
     
     // MARK: - Public Methods
@@ -69,6 +81,9 @@ actor OpenAIHandler{
         let message = description.isEmpty ? prompt : "UserImage: \(description)\n\n\(prompt)"
         messages.append(Chat(role: .user, content: message))
         let query = ChatQuery(model: .gpt3_5Turbo, messages: self.messages)
+        guard let openAI = self.openAI else {
+            throw logAndThrow(OpenAIError.noAPIKey)
+        }
         
         // Send request and get the returned message
         var chatMessage: Chat
@@ -94,6 +109,9 @@ actor OpenAIHandler{
     /// - Returns: The transcribed audio
     func sendTranscritpion(data: Data, fileName: String) async throws -> String {
         let query = AudioTranscriptionQuery(file: data, fileName: fileName, model: .whisper_1, language: lang)
+        guard let openAI = self.openAI else {
+            throw logAndThrow(OpenAIError.noAPIKey)
+        }
         do {
             let result = try await openAI.audioTranscriptions(query: query)
             self.log.debug("Transcription: \(result.text)")
